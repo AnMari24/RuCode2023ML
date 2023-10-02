@@ -10,6 +10,7 @@ import xgboost as xgb
 from xgboost import XGBRegressor
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+import pickle
 
 
 # In[2]:
@@ -51,4 +52,11 @@ bst = XGBRegressor(
     random_state = 77,
 )
 bst.fit(df1.drop(['signal_share'], axis=1), df1['signal_share'])
+
+
+# In[ ]:
+
+
+file_name = "xgb_reg.pkl"
+pickle.dump(bst, open(file_name, "wb"))
 
