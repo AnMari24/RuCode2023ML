@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[43]:
+# In[1]:
 
 
 import pandas as pd
@@ -10,6 +10,7 @@ import xgboost as xgb
 from xgboost import XGBClassifier
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+import pickle
 
 
 # In[44]:
@@ -51,4 +52,11 @@ bst = XGBClassifier(
     random_state = 77,
 )
 bst.fit(df1.drop(['mars_type'], axis=1), df1['mars_type'])
+
+
+# In[ ]:
+
+
+file_name = "xgb_class.pkl"
+pickle.dump(bst, open(file_name, "wb"))
 
